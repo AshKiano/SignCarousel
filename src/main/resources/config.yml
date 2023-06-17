@@ -1,0 +1,21 @@
+signs:                  # The main section that contains configurations for all signs.
+  - location:           # The location of the first sign.
+      world: 'world'    # The name of the world where the first sign is located.
+      x: -1             # The X coordinate of the first sign.
+      y: 71             # The Y coordinate of the first sign.
+      z: 123            # The Z coordinate of the first sign.
+    delay: 10           # The delay (in seconds) between message changes for the first sign.
+    typewriting_effect: true  # Whether the typewriting effect is used for the first sign.
+    messages:           # The list of messages that will be displayed on the first sign.
+      - ['&aHello', '&bWelcome to', 'our server', '']   # The first message, with color codes.
+      - ['&eEnjoy', 'your', 'stay', '']   # The second message, with color codes.
+  - location:           # The location of the second sign.
+      world: 'world_nether'  # The name of the world where the second sign is located.
+      x: 200            # The X coordinate of the second sign.
+      y: 70             # The Y coordinate of the second sign.
+      z: 200            # The Z coordinate of the second sign.
+    delay: 10           # The delay (in seconds) between message changes for the second sign.
+    typewriting_effect: false  # Whether the typewriting effect is used for the second sign.
+    messages:           # The list of messages that will be displayed on the second sign.
+      - ['&cWelcome to', 'the Nether!', '', '']   # The first message, with color codes.
+      - ['&6Stay safe!', '', '', '']   # The second message, with color codes.
