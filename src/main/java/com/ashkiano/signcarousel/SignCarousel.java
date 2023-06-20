@@ -20,6 +20,8 @@ public class SignCarousel extends JavaPlugin {
         // Save the default configuration if it doesn't exist yet.
         saveDefaultConfig();
 
+        Metrics metrics = new Metrics(this, 18812);
+
         // Load the configuration.
         FileConfiguration config = getConfig();
         // Get list of sign configurations from the config file.
