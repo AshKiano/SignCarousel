@@ -17,46 +17,59 @@ public class SignCarousel extends JavaPlugin {
     // This method is called when the plugin is enabled.
     @Override
     public void onEnable() {
-        // Save the default configuration if it doesn't exist yet.
-        saveDefaultConfig();
+        try {
+            // Save the default configuration if it doesn't exist yet.
+            saveDefaultConfig();
 
-        Metrics metrics = new Metrics(this, 18812);
+            Metrics metrics = new Metrics(this, 18812);
 
-        // Load the configuration.
-        FileConfiguration config = getConfig();
-        // Get list of sign configurations from the config file.
-        List<Map<?, ?>> signConfigs = config.getMapList("signs");
+            // Load the configuration.
+            FileConfiguration config = getConfig();
+            // Get list of sign configurations from the config file.
+            List<Map<?, ?>> signConfigs = config.getMapList("signs");
 
-        // Loop over each sign configuration.
-        for (Map<?, ?> signConfig : signConfigs) {
-            // Get the list of messages for this sign.
-            List<List<String>> messages = (List<List<String>>) signConfig.get("messages");
-            // Get the delay between messages for this sign.
-            int delay = (int) signConfig.get("delay");
-            // Check if typewriting effect is enabled for this sign.
-            boolean useTypewritingEffect = (boolean) signConfig.get("typewriting_effect");
+            // Loop over each sign configuration.
+            for (Map<?, ?> signConfig : signConfigs) {
+                // Process each sign configuration inside a try-catch block.
+                try {
+                    // Get the list of messages for this sign.
+                    List<List<String>> messages = (List<List<String>>) signConfig.get("messages");
+                    // Get the delay between messages for this sign.
+                    int delay = (int) signConfig.get("delay");
+                    // Check if typewriting effect is enabled for this sign.
+                    boolean useTypewritingEffect = (boolean) signConfig.get("typewriting_effect");
 
-            // Get the location of this sign.
-            Map<?, ?> locationData = (Map<?, ?>) signConfig.get("location");
-            String worldName = (String) locationData.get("world");
-            World world = getServer().getWorld(worldName);
+                    // Get the location of this sign.
+                    Map<?, ?> locationData = (Map<?, ?>) signConfig.get("location");
+                    String worldName = (String) locationData.get("world");
+                    World world = getServer().getWorld(worldName);
 
-            int x = (int) locationData.get("x");
-            int y = (int) locationData.get("y");
-            int z = (int) locationData.get("z");
+                    int x = (int) locationData.get("x");
+                    int y = (int) locationData.get("y");
+                    int z = (int) locationData.get("z");
 
-            Location signLocation = new Location(world, x, y, z);
-            // Check if the block at the given location is a sign.
-            if (!(signLocation.getBlock().getState() instanceof Sign)) {
-                // If not, log a warning and skip this sign.
-                getLogger().warning("Block at " + signLocation + " is not a sign!");
-                continue;
+                    Location signLocation = new Location(world, x, y, z);
+                    // Check if the block at the given location is a sign.
+                    if (!(signLocation.getBlock().getState() instanceof Sign)) {
+                        // If not, log a warning and skip this sign.
+                        getLogger().warning("Block at " + signLocation + " is not a sign!");
+                        continue;
+                    }
+                    // Get the sign at the given location.
+                    Sign sign = (Sign) signLocation.getBlock().getState();
+
+                    // Create a new SignCarouselTask for this sign and schedule it to run periodically.
+                    new SignCarouselTask(sign, messages, delay, useTypewritingEffect).runTaskTimer(this, 0L, delay * 20L);
+                } catch (Exception e) {
+                    // Log any exceptions that occur during sign configuration processing.
+                    getLogger().warning("Error processing sign configuration: " + e.getMessage());
+                }
             }
-            // Get the sign at the given location.
-            Sign sign = (Sign) signLocation.getBlock().getState();
-
-            // Create a new SignCarouselTask for this sign and schedule it to run periodically.
-            new SignCarouselTask(sign, messages, delay, useTypewritingEffect).runTaskTimer(this, 0L, delay * 20L);
+        } catch (Exception e) {
+            // Log any exceptions that occur during plugin initialization.
+            getLogger().severe("Error initializing plugin: " + e.getMessage());
+            // Disable the plugin to prevent further issues.
+            getServer().getPluginManager().disablePlugin(this);
         }
     }
 
