@@ -1,3 +1,15 @@
+# The 'messages' section contains all the messages that are displayed by the plugin.
+messages:
+  # Message displayed when a block at a certain location is not a sign.
+  not_a_sign:
+    en: "Block at %s is not a sign!"
+  # Message displayed when there is an error processing the sign configuration.
+  config_error:
+    en: "Error processing sign configuration: %s"
+  # Message displayed when there is an error initializing the plugin.
+  init_error:
+    en: "Error initializing plugin: %s"
+
 signs:                  # The main section that contains configurations for all signs.
   - location:           # The location of the first sign.
       world: 'world'    # The name of the world where the first sign is located.
