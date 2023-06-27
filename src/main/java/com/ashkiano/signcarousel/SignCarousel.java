@@ -33,6 +33,11 @@ public class SignCarousel extends JavaPlugin {
             // Load the main configuration
             FileConfiguration config = getConfig();
 
+            // Retrieve the language from the configuration if it's set
+            if (config.isSet("language")) {
+                language = config.getString("language");
+            }
+
             // Retrieve the list of sign configurations from the main configuration
             List<Map<?, ?>> signConfigs = config.getMapList("signs");
 

@@ -1,14 +1,19 @@
+language: 'en'
+
 # The 'messages' section contains all the messages that are displayed by the plugin.
 messages:
   # Message displayed when a block at a certain location is not a sign.
   not_a_sign:
     en: "Block at %s is not a sign!"
+    cs: "Blok na pozici %s není značka!"
   # Message displayed when there is an error processing the sign configuration.
   config_error:
     en: "Error processing sign configuration: %s"
+    cs: "Chyba při zpracování konfigurace značky: %s"
   # Message displayed when there is an error initializing the plugin.
   init_error:
     en: "Error initializing plugin: %s"
+    cs: "Chyba při inicializaci pluginu: %s"
 
 signs:                  # The main section that contains configurations for all signs.
   - location:           # The location of the first sign.
