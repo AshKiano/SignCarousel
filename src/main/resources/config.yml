@@ -9,6 +9,7 @@ messages:
     sk: "Blok na pozícii %s nie je značka!"
     pl: "Blok na pozycji %s nie jest znakiem!"
     de: "Block an %s ist kein Schild!"
+    es: "¡El bloque en %s no es un letrero!"
   # Message displayed when there is an error processing the sign configuration.
   config_error:
     en: "Error processing sign configuration: %s"
@@ -16,6 +17,7 @@ messages:
     sk: "Chyba pri spracovaní konfigurácie značky: %s"
     pl: "Błąd przetwarzania konfiguracji znaku: %s"
     de: "Fehler bei der Verarbeitung der Schildkonfiguration: %s"
+    es: "Error al procesar la configuración del letrero: %s"
   # Message displayed when there is an error initializing the plugin.
   init_error:
     en: "Error initializing plugin: %s"
@@ -23,6 +25,7 @@ messages:
     sk: "Chyba pri inicializácii pluginu: %s"
     pl: "Błąd podczas inicjalizacji pluginu: %s"
     de: "Fehler bei der Initialisierung des Plugins: %s"
+    es: "Error al inicializar el plugin: %s"
 
 signs:                  # The main section that contains configurations for all signs.
   - location:           # The location of the first sign.
