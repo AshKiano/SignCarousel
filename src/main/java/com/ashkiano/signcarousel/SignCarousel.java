@@ -88,7 +88,7 @@ public class SignCarousel extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
         }
 
-        System.out.println("Thank you for using the SignCarousel plugin! If you enjoy using this plugin, please consider making a donation to support the development. You can donate at: https://paypal.me/josefvyskocil");
+        this.getLogger().info("Thank you for using the SignCarousel plugin! If you enjoy using this plugin, please consider making a donation to support the development. You can donate at: https://paypal.me/josefvyskocil");
     }
 
     // Task that updates a sign's text periodically
