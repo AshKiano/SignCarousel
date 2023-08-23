@@ -6,12 +6,12 @@
 
     <groupId>com.ashkiano</groupId>
     <artifactId>SignCarousel</artifactId>
-    <version>1.11</version>
+    <version>1.12</version>
     <packaging>jar</packaging>
 
     <name>SignCarousel</name>
 
-    <description>Changes sign text by defined list in donfig and time also defined in config.</description>
+    <description>Changes sign text by defined list in config and time also defined in config.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,6 +70,11 @@
             <artifactId>spigot-api</artifactId>
             <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
         </dependency>
     </dependencies>
 </project>
