@@ -1,5 +1,5 @@
 name: SignCarousel
-version: '1.12'
+version: '1.14'
 main: com.ashkiano.signcarousel.SignCarousel
 api-version: '1.16'
 authors: [AshKiano]
